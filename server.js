@@ -9,10 +9,10 @@ const port = 3000;
 
 
 app.use(express.static('public')); // Serve static files from the 'public' directory
-
 app.use(cors());
 
 // Endpoint to generate token
+
 app.post('/generate-token', async (req, res) => {
   try {
     const token = await getToken();
@@ -21,9 +21,6 @@ app.post('/generate-token', async (req, res) => {
     console.error('Error in token generation endpoint:', error);
     res.status(500).json({ error: 'Failed to generate token' });
   }
-
-  //=========================================================//
-
 });
 
 // Endpoint to fetch Profile Intergrity from Adobe API
@@ -33,8 +30,6 @@ app.get('/Profile-integrity', async (req, res) => {
   if (!accessToken) {
     return res.status(401).json({ error: 'Access token not provided' });
   }
-
-
 try {
   const URL = 'https://platform.adobe.io/data/core/ups/previewsamplestatus';
   const response = await fetch(URL, {
